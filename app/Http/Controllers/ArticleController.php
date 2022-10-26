@@ -64,6 +64,36 @@ class ArticleController extends Controller
     }
 
 
+     /**
+     * @OA\Get(
+     *      path="/articles/{id}",
+     *      operationId="showArticles",
+     *      tags={"Articles"},
+     *      summary="Get articles information",
+     *      description="Returns list of articles",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Article id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function showArticle(Article $article)
     {
         try {
@@ -74,6 +104,36 @@ class ArticleController extends Controller
     }
 
 
+      /**
+     * @OA\Get(
+     *      path="/articles/{id}/comment",
+     *      operationId="getArticlesCommentList",
+     *      tags={"Articles"},
+     *      summary="Get lists of commnts for an article",
+     *      description="Returns list of comments",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Article id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function showComments(Article $article)
     {
         try {
@@ -85,6 +145,42 @@ class ArticleController extends Controller
         }
     }
 
+
+
+        /**
+     * @OA\Post(
+     *      path="/articles/{id}/like",
+     *      operationId="Add Likes to Article",
+     *      tags={"Articles"},
+     *      summary="Like Article",
+     *      description=" Add new Likes to Article",
+     *       @OA\Parameter(
+     *          name="id",
+     *          description="Article id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function addLike(Article $article)
     {
         try {

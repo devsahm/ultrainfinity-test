@@ -17,7 +17,6 @@ class CommentService
                 'article_id' => $article->id,
                 'body' => $params['body'],
             ]);
-
             return $comment;
 
         } catch (\Throwable $th) {
