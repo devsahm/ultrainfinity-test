@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('v1')->group(function(){
 
     Route::prefix('articles')->group(function(){
@@ -29,5 +25,7 @@ Route::prefix('v1')->group(function(){
         Route::post('{article}/comment', [CommentController::class, 'create']);
         Route::get('{article}/comment', [ArticleController::class, 'showComments']);
         Route::post('{article}/like', [ArticleController::class, 'addLike']);
+        Route::get('{article}/view', [ArticleController::class, 'viewsOfArticle']);
+        
     });
 });

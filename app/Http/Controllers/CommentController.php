@@ -61,7 +61,7 @@ class CommentController extends Controller
     {
         try {
             $comment = $this->commentService->createComment($article, $request->validated());
-            return ResponseHelper::success(CommentResource::make($comment));
+            return ResponseHelper::success(['message' => "Comments has been sent successfully", "comment" => CommentResource::make($comment)]);
         } catch (\Throwable $th) {
             return ResponseHelper::fail($th->getMessage());
         }

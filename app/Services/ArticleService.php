@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\IncrementViewedCount;
 use App\Models\Article;
 use ErrorException;
 use Illuminate\Support\Facades\Cache;
@@ -29,6 +30,12 @@ class ArticleService
        }
     }
 
+    public function getArticle(Article $article)
+    {
+        IncrementViewedCount::dispatchSync($article)->delay(now()->addSecond(5));
+       return $article;
+    }
+
     public function createArticle(array $params)
     {
         try {
@@ -37,6 +44,9 @@ class ArticleService
             throw new ErrorException($th->getMessage());
         }
     }
+
+
+
 
 
     

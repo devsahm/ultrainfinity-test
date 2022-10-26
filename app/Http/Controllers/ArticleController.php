@@ -9,7 +9,6 @@ use App\Http\Resources\CommentResource;
 use App\Models\Article;
 use App\Services\ArticleService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -132,7 +131,8 @@ class ArticleController extends Controller
     public function showArticle(Article $article)
     {
         try {
-            return ResponseHelper::success(ArticleResource::make($article));
+           $article = $this->articleService->getArticle($article);
+           return ResponseHelper::success(ArticleResource::make($article));
         } catch (ModelNotFoundException $th) {
             return ResponseHelper::fail('resouce nor found');
         }
@@ -144,7 +144,7 @@ class ArticleController extends Controller
      *      path="/articles/{id}/comment",
      *      operationId="getArticlesCommentList",
      *      tags={"Articles"},
-     *      summary="Get lists of commnts for an article",
+     *      summary="Get lists of comments for an article",
      *      description="Returns list of comments",
      *      @OA\Parameter(
      *          name="id",
@@ -226,4 +226,44 @@ class ArticleController extends Controller
             return ResponseHelper::fail($th->getMessage());
         }
     }
+
+  /**
+     * @OA\Get(
+     *      path="/articles/{id}/view",
+     *      operationId="getArticlesViews",
+     *      tags={"Articles"},
+     *      summary="Get An article viewa",
+     *      description="Returns list of comments",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Article id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function viewsofArticle(Article $article)
+    {
+        try {
+            return ResponseHelper::success($article->views);
+        } catch (ModelNotFoundException $th) {
+            return ResponseHelper::fail($th->getMessage());
+        }
+    }
+
 }
