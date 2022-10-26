@@ -32,7 +32,9 @@ class ArticleService
 
     public function getArticle(Article $article)
     {
-        IncrementViewedCount::dispatchSync($article)->delay(now()->addSecond(5));
+        // IncrementViewedCount::dispatchSync($article)->delay(now()->addSecond(5));
+        $article->increment('views');
+        sleep(5);
        return $article;
     }
 

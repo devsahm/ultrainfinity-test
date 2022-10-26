@@ -34,9 +34,9 @@ class CommentController extends Controller
      *    required=true,
      *    description=" comment credentials",
      *    @OA\JsonContent(
-     *       required={"body"},
+     *       required={"body", "subject"},
      *       @OA\Property(property="body", type="string", format="body", example="This is my first comment"),
-     *       @OA\Property(property="persistent", type="boolean", example="true"),
+     *       @OA\Property(property="subject", type="string", example="My first comment"),
      *    ),
      * ),
      *      @OA\Response(

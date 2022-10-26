@@ -130,6 +130,7 @@ class ArticleController extends Controller
      */
     public function showArticle(Article $article)
     {
+        
         try {
            $article = $this->articleService->getArticle($article);
            return ResponseHelper::success(ArticleResource::make($article));
