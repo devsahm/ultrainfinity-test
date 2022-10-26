@@ -36,6 +36,11 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+- Swagger Documentation
+```
+http://127.0.0.1:8000/api/documentation
+```
+
 Thank you and I really look forward to hearing from you
 
 

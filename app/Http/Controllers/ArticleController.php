@@ -53,6 +53,41 @@ class ArticleController extends Controller
     }
 
     
+     /**
+     * @OA\Post(
+     *      path="/articles",
+     *      operationId="createArticle",
+     *      tags={"Articles"},
+     *      summary="Store new Article",
+     *      description="Create new article",
+     *    @OA\RequestBody(
+     *    required=true,
+     *    description=" comment credentials",
+     *    @OA\JsonContent(
+     *       required={"body", "subject", "image"},
+     *       @OA\Property(property="body", type="string", format="body", example="This is my first comment"),
+     *       @OA\Property(property="subject", type="string", format="subject", example="Happy codding"),
+     *      @OA\Property(property="image", type="string", format="image", example="https://via.placeholder.com/300/09f/fff.png"),
+     *    ),
+     * ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function create(CreateArticleRequest $request)
     {
         try {
