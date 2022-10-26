@@ -15,6 +15,7 @@ class CommentService
 
            $comment =  Comment::create([
                 'article_id' => $article->id,
+                'subject' => $params['subject'],
                 'body' => $params['body'],
             ]);
             return $comment;
