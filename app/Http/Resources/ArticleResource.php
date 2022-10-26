@@ -19,8 +19,8 @@ class ArticleResource extends JsonResource
             'subject' => $this->subject,
             'body' => substr($this->body, 0, 100). '...' ,
             'image' => $this->image,
-            'likes' => $this->likes,
-            'views' => $this->views,
+            'likes' => $this->likes??0,
+            'views' => $this->views??0,
             'tags' => TagResource::collection($this->tags),
             'comments' => CommentResource::collection($this->comments)
         ];
