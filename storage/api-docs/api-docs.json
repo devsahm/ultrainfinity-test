@@ -161,6 +161,41 @@
                     }
                 }
             }
+        },
+        "/articles/{id}/like": {
+            "post": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Like Article",
+                "description": " Add new Likes to Article",
+                "operationId": "Add Likes to Article",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
         }
     }
 }
