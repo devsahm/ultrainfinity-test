@@ -31,12 +31,4 @@ class CreateCommentRequest extends FormRequest
             'body' => 'required|min:3'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'article_id.required' => 'the article is required',
-            'article.exists' => 'The article selected does not exist, hence invalid',
-        ];
-    }
 }
