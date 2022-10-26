@@ -13,7 +13,7 @@ class ArticleService
     public function allArticles()
     {
         try {
-            return Article::orderBy('created_at', 'DESC')->paginate(10);
+            return Article::orderBy('id', 'DESC')->paginate(10);
         } catch (\Throwable $th) {
             throw new ErrorException($th->getMessage());
         }
