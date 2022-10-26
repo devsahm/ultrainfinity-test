@@ -132,7 +132,7 @@
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Get lists of commnts for an article",
+                "summary": "Get lists of comments for an article",
                 "description": "Returns list of comments",
                 "operationId": "getArticlesCommentList",
                 "parameters": [
@@ -183,7 +183,8 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "body"
+                                    "body",
+                                    "subject"
                                 ],
                                 "properties": {
                                     "body": {
@@ -191,9 +192,9 @@
                                         "format": "body",
                                         "example": "This is my first comment"
                                     },
-                                    "persistent": {
-                                        "type": "boolean",
-                                        "example": "true"
+                                    "subject": {
+                                        "type": "string",
+                                        "example": "My first comment"
                                     }
                                 },
                                 "type": "object"
@@ -242,6 +243,38 @@
                     },
                     "400": {
                         "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/articles/{id}/view": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Get An article viewa",
+                "description": "Returns list of comments",
+                "operationId": "getArticlesViews",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
                     },
                     "401": {
                         "description": "Unauthenticated"

@@ -233,7 +233,7 @@ class ArticleController extends Controller
      *      path="/articles/{id}/view",
      *      operationId="getArticlesViews",
      *      tags={"Articles"},
-     *      summary="Get An article viewa",
+     *      summary="Get An article view",
      *      description="Returns list of comments",
      *      @OA\Parameter(
      *          name="id",
